@@ -1,0 +1,7 @@
+build/*
+public/*
+src/react-app-env.d.ts
+node_modules/*
+*.js
+*.cjs
+vite.config.ts
