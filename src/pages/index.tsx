@@ -13,12 +13,6 @@ const Pages: React.FC = () => {
   const optionsSideBar = useMemo<OptionsSidebarProps[]>(() => {
     const options = [];
 
-    options.push({
-      name: 'Loja',
-      url: '/store',
-      icon: IoStorefrontOutline,
-    });
-
     if (user?.role === 'ADMIN') {
       options.push({
         name: 'Estoque',
@@ -30,6 +24,12 @@ const Pages: React.FC = () => {
             url: '/new-product',
           },
         ],
+      });
+    } else {
+      options.push({
+        name: 'Loja',
+        url: '/store',
+        icon: IoStorefrontOutline,
       });
     }
 

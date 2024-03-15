@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 import { Button, Flex, Icon, Text, Input, useColorModeValue } from '@chakra-ui/react';
 
+import { ModalConfirmation } from '@components';
 import Header from '@components/Header';
 import useFetch from '@hooks/useFetch';
 import api from '@services/api';
@@ -20,13 +21,14 @@ const Home: React.FC = () => {
   const user = useAuth((state) => state.user);
   const onLoading = useLoading((state) => state.onLoading);
 
-  const { data: products } = useFetch<Product[]>('/product');
+  const { data: products } = useFetch<Product[]>('/product', { suspense: true });
 
   const bgInput = useColorModeValue('gray.50', 'navy.800');
 
   const [search, setSearch] = useState('');
   const [supermarketCar, setSupermarketCar] = useState<SupermarketCarProduct[]>([]);
   const [openDrawerResume, setOpenDrawerResume] = useState(false);
+  const [openModalConfirmation, setOpenModalConfirmation] = useState(false);
 
   const filteredProducts: Product[] = useMemo(() => filteredList(products || [], search), [products, search]);
 
@@ -50,6 +52,13 @@ const Home: React.FC = () => {
     setOpenDrawerResume(false);
   };
 
+  const onCloseConfirmation = () => {
+    setSupermarketCar([]);
+    setOpenDrawerResume(false);
+    setOpenModalConfirmation(false);
+    toast.success('Pedido realizado com sucesso.');
+  };
+
   const onFinish = async () => {
     onLoading(true);
 
@@ -67,10 +76,9 @@ const Home: React.FC = () => {
         })),
       };
 
-      console.log('🚀 ~ onFinish ~ saleData:', saleData);
-
-      /* await api.post(`sales`); */
+      await api.post(`sales`, saleData);
       onLoading(false);
+      onCloseConfirmation();
     } catch (error) {
       onLoading(false);
       toast.error(`Ops parece que algo deu errado na seu pedido por favor tente novamente.`);
@@ -110,10 +118,19 @@ const Home: React.FC = () => {
       <DrawerResume
         isOpen={openDrawerResume}
         onClose={onCloseDrawerResume}
-        onFinish={() => onFinish()}
+        onFinish={() => setOpenModalConfirmation(true)}
         products={supermarketCar}
         setSupermarketCar={setSupermarketCar}
         supermarketCar={supermarketCar}
+      />
+
+      <ModalConfirmation
+        title="Confirmar pedido"
+        open={openModalConfirmation}
+        onConfirm={onFinish}
+        onClose={onCloseConfirmation}
+        onCancel={() => setOpenModalConfirmation(false)}
+        text="Deseja confirmar o pedido?"
       />
     </Flex>
   );

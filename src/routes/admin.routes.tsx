@@ -7,21 +7,10 @@ import Pages from '@pages';
 import CreateProduct from '@pages/CreateProduct';
 import Stock from '@pages/Stock';
 
-import Home from '../pages/Home';
-
 const AdminRoutes: React.FC = () => {
   return (
     <Routes>
       <Route element={<Pages />}>
-        <Route
-          path="home"
-          element={
-            <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <Home />
-            </ErrorBoundary>
-          }
-        />
-
         <Route
           path="stock"
           element={
@@ -39,7 +28,7 @@ const AdminRoutes: React.FC = () => {
             </ErrorBoundary>
           }
         />
-        <Route path="*" element={<Navigate to="/home" />} />
+        <Route path="*" element={<Navigate to="/stock" />} />
       </Route>
     </Routes>
   );

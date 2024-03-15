@@ -105,7 +105,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, options }) => {
           {options.map((option) =>
             option.childrens?.length ? (
               <Subject
-                key={option.url}
+                key={option.name}
                 icon={option.icon}
                 name={option.name}
                 childrens={option.childrens}

@@ -3,8 +3,6 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 import { Button } from '@chakra-ui/react';
 
-import { useTheme } from 'styled-components';
-
 import { buttonSubmit } from '@components';
 import { useAuth } from '@store/auth';
 
@@ -13,7 +11,6 @@ import iziLogo from '../../../assets/logo.png';
 import { Container, InputContainer, InputLogin, InputPassword, Label, LeftDiv, Line, RightDiv, Row } from './styles';
 
 const Login: React.FC = () => {
-  const { colors } = useTheme();
   const login = useAuth((state) => state.login);
 
   const isLoading = useAuth((state) => state.isLoading);
