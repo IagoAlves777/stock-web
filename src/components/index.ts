@@ -5,3 +5,5 @@ export { default as Modal } from './Modal';
 export { default as ModalConfirmation } from './ModalConfirmation';
 export { default as Header } from './Header';
 export { default as Table } from './Table';
+export { default as Inputs } from './Inputs';
+export { default as InputMoney } from './InputMoney';
