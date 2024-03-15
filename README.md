@@ -1,27 +1,25 @@
-# React + TypeScript + Vite
+# Stock Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição
 
-Currently, two official plugins are available:
+O Stock Web é o front end de um sistema de estoque e uma loja onde os usuários podem comprar os produtos disponíveis.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+- **Node.js v18.14.2**
+- **React.js**
+- **Typescript**
+- **Chakra UI**
+- **Styled Components**
+- **Zustand**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Instalação
 
-- Configure the top-level `parserOptions` property like this:
+1. Clone este repositório para o seu ambiente local.
+2. Na pasta do projeto, instale as dependências utilizando `yarn` ou `npm install`.
+3. Inicie o projeto utilizando `yarn dev` ou `npm run dev`.
+4. Acesse a aplicação na URL `http://localhost:5173/`.
+5. Para acessar a loja da aplicação, utilize o usuário: **user** e senha: **user1234**.
+6. Para visualizar o estoque, utilize o usuário: **admin** e senha: **admin123**.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+**Observação:** Certifique-se de que o backend (stock-api) esteja rodando para que o front possa se comunicar corretamente e a aplicação funcione perfeitamente.
