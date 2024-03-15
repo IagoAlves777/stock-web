@@ -63,7 +63,7 @@ const DrawerResume: React.FC<Props> = ({ isOpen, onClose, onFinish, products, se
   };
 
   return (
-    <Drawer onClose={onClose} isOpen={isOpen} size="md">
+    <Drawer onClose={onClose} isOpen={isOpen} size="lg">
       <DrawerOverlay />
       <DrawerContent bg={bg}>
         <DrawerCloseButton />
@@ -85,7 +85,9 @@ const DrawerResume: React.FC<Props> = ({ isOpen, onClose, onFinish, products, se
                   height="3rem"
                   alignItems="center"
                 >
-                  <Text width="10rem">{product.name}</Text>
+                  <Text width="18rem" whiteSpace="nowrap" overflow="hidden" textOverflow="ellipsis">
+                    {product.name}
+                  </Text>
                   <Flex gap="2rem" height="3rem" alignItems="center">
                     <Flex height="3rem" alignItems="center" gap="0.5rem">
                       <IconButton
@@ -99,7 +101,7 @@ const DrawerResume: React.FC<Props> = ({ isOpen, onClose, onFinish, products, se
                       </Text>
                       <IconButton size="sm" aria-label="excluir" icon={<AddIcon />} onClick={() => onAdd(product)} />
                     </Flex>
-                    <Text minWidth="4rem">{formatMoney(product.price * product.amount)}</Text>
+                    <Text minWidth="8rem">{formatMoney(product.price * product.amount)}</Text>
                     <Flex>
                       <IconButton
                         size="sm"
